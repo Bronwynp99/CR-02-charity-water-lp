@@ -1,47 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Charity Water – When water flows, so does change</title>
+  <meta name="description" content="Every dollar you give brings clean water—and proof of it. Join us and invest in clean water today." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Merriweather:wght@300;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand-yellow:#FFD200;
+      --brand-ink:#0F172A;
+      --brand-cream:#F5F1E8;
+      --brand-muted:#BFC5CF;
+      --overlay: rgba(10,16,25,.30);
+      --maxw: 1200px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; 
+      font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--brand-ink);
+      background:#ffffff;
+      line-height:1.6;
+    }
+
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:stretch;
+      justify-content:flex-end;
+      background-image: url('assets/Charity works .jpg');
+      background-size:cover;
+      background-position:center left;
+      color: var(--brand-cream);
+      isolation:isolate;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:0; 
+      background: linear-gradient(90deg, rgba(8,12,20,0.55) 0%, rgba(8,12,20,0.35) 45%, rgba(8,12,20,0.15) 70%, rgba(8,12,20,0.00) 100%);
+      z-index:-1;
+    }
+
+    .hero-inner{
+      width: 100%;
+      max-width: var(--maxw);
+      margin-inline:auto;
+      display:flex;
+      padding: clamp(16px, 3vw, 32px);
+    }
+
+    .pitch{
+      margin-left:auto;
+      width:min(560px, 100%);
+      align-self:center;
+      padding: clamp(16px, 4vw, 24px);
+    }
+
+    .eyebrow{ 
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      font-weight:600;
+      font-size:.8rem;
+      opacity:.85;
+      margin:0 0 .75rem 0;
+    }
+
+    .headline{ 
+      font-family: Merriweather, Georgia, serif; 
+      font-weight:700; 
+      font-size: clamp(2.0rem, 4.2vw + .5rem, 3.2rem);
+      line-height:1.1; 
+      margin:0 0 .75rem 0;
+    }
+    .headline .change{
+      background: linear-gradient(90deg, #A7DAFF 0%, #66B8F2 40%, #4AA3DF 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .subcopy{
+      font-size: clamp(1rem, 1.1vw + .5rem, 1.25rem);
+      color: #EDE9DF;
+      max-width: 34ch; 
+      margin: 0 0 1.25rem 0;
+    }
+
+    .cta{
+      display:inline-block; 
+      background: var(--brand-yellow); 
+      color:#1B1300; 
+      font-weight:700; 
+      text-decoration:none; 
+      padding:.9rem 1.25rem; 
+      border-radius:.75rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.18);
+      transition: transform .08s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .cta:hover{
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+      box-shadow: 0 10px 22px rgba(0,0,0,.22);
+    }
+    .cta:active{
+      transform: translateY(0);
+      box-shadow: 0 6px 14px rgba(0,0,0,.18);
+    }
+
+    .left-rail{
+      position:absolute; 
+      left: clamp(10px, 2.5vw, 28px); 
+      bottom: clamp(14px, 4vw, 36px);
+      display:flex; 
+      flex-direction:column; 
+      gap:.25rem;
+      font-size:.8rem; 
+      opacity:.85;
+      font-weight:500;
+    }
+    .left-rail span{opacity:.9}
+
+    .brandmark{
+      position:absolute; 
+      right: clamp(12px, 3vw, 36px); 
+      bottom: clamp(12px, 3vw, 36px);
+      display:flex;
+      align-items:center;
+      gap:.5rem;
+      opacity:.95;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,.35));
+    }
+    .brandmark img{
+      height:22px;
+      width:auto;
+    }
+
+    .proof{
+      padding: 56px 20px;
+      background:#fff;
+      color: var(--brand-ink);
+    }
+    .section-inner{
+      max-width: var(--maxw);
+      margin-inline:auto;
+    }
+    .grid{
+      display:grid;
+      gap:22px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .card{
+      border:1px solid var(--brand-muted);
+      border-radius:16px;
+      padding:22px;
+      background:#fff;
+    }
+    .card h3{
+      margin:0 0 .5rem 0;
+      font-size:1.25rem;
+    }
+    .card p{
+      margin:0;
+      color:#475569;
+    }
+
+    @media (max-width: 980px){
+      .proof .grid{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 860px){
+      .headline{ font-size: clamp(1.9rem, 6.2vw, 2.5rem); }
+      .subcopy{ max-width: 40ch; }
+    }
+    @media (max-width: 720px){
+      .hero{ background-position:center; }
+      .left-rail{ position:static; margin: 10px 0 0 10px; }
+      .brandmark{ position:static; margin: 12px 0 0 auto; }
+      .hero-inner{ flex-direction:column; }
+      .pitch{ width:100%; padding-inline: 6px; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Hero Section: This is the main banner at the top of the page -->
-    <section class="hero">
-        <!-- Main headline -->
-        <h1>Clean Water for Everyone</h1>
-        <!-- Subheadline -->
-        <p>Join us in bringing safe, clean water to communities in need.</p>
-    </section>
+  <header class="hero" role="banner">
+    <div class="hero-inner">
+      <div class="left-rail" aria-hidden="true">
+        <span>YOU GIVE</span>
+        <span>WE BUILD</span>
+        <span>YOU SEE</span>
+        <span>@charitywater</span>
+      </div>
 
-    <!-- Story Section: This tells the story of the nonprofit -->
-    <section class="story">
-        <h2>Our Story</h2>
-        <p>
-         
-    </section>
+      <div class="pitch">
+        <p class="eyebrow">Clean Water Changes Everything</p>
+        <h1 class="headline">When water flows, so does <span class="change">change</span></h1>
+        <p class="subcopy">Every dollar you give brings clean water — and proof of it.</p>
+        <a class="cta" href="#donate">Invest in Clean Water</a>
+      </div>
 
-    <!-- Real-World Impact Story Section -->
-    <section class="impact-story">
-        <!-- Section headline -->
-        <h2>Real Impact: Meet Amina</h2>
-        <!-- Container for image and text -->
-        <div class="impact-content">
-            <!-- Impact image -->
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Amina smiling with clean water" class="impact-image">
-            <!-- Impact story text -->
-            <p>
-                Amina used to walk miles every day to collect water for her family. Thanks to your support, her village now has a clean water well. Amina can go to school and her family is healthier and happier.
-            </p>
-        </div>
-    </section>
+      <div class="brandmark">
+        <img src="assets/cw_logo.png" alt="charity: water logo"> 
+      </div>
+    </div>
+  </header>
 
-    <!-- Call-to-Action Section: This encourages visitors to take action -->
-    <section class="call-to-action">
-        <h2>Make a Difference</h2>
-        <p>Your support can help save lives. Every donation brings us closer to a world with clean water for all.</p>
-        <a href="#" class="donate-button">Donate Now</a>
-    </section>
+  <section class="proof" id="how-it-works">
+    <div class="section-inner">
+      <div class="grid">
+        <article class="card">
+          <h3>YOU GIVE</h3>
+          <p>Your gift funds clean water projects for communities in need.</p>
+        </article>
+        <article class="card">
+          <h3>WE BUILD</h3>
+          <p>Our local partners plan, build, and train—sustainably and transparently.</p>
+        </article>
+        <article class="card">
+          <h3>YOU SEE</h3>
+          <p>We share updates and proof so you can see your impact with real data.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding:28px 20px; text-align:center; border-top:1px solid var(--brand-muted);">
+    <small>© <span id="y"></span> charity: water (demo). Built for a student project.
+      <a href="#donate" style="margin-left:.5rem; color:#0F172A; font-weight:600; text-underline-offset:4px;">Donate</a>
+    </small>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
