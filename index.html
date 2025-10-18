@@ -6,11 +6,13 @@
     <title>Charity Water – When water flows, so does change</title>
     <meta name="description" content="Every dollar you give brings clean water—and proof of it. Join us and invest in clean water today." />
 
-    <!-- Beginner‑friendly: one file (HTML + CSS). Replace image paths in the comments below. -->
-    <!-- Fonts: swap in your brand fonts if you have web licenses -->
+    <!-- Proxima Nova font from Adobe Fonts or similar service -->
+    <!-- Note: You'll need a web font license for Proxima Nova. Using Google Fonts alternative if needed. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Merriweather:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Montserrat is very similar to Proxima Nova and free to use -->
+    <!-- If you have Proxima Nova license, replace the link above with your Adobe Fonts or other service -->
 
     <style>
         :root{
@@ -27,7 +29,8 @@
         html,body{height:100%}
         body{
             margin:0; 
-            font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+            /* Using Montserrat (similar to Proxima Nova) for all text */
+            font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
             color: var(--brand-ink);
             background:#ffffff;
             line-height:1.6;
@@ -97,24 +100,40 @@
             );
             pointer-events:none;
         }
-        /* Left helper text (YOU GIVE / WE BUILD / YOU SEE) */
+        /* Left helper text (YOU GIVE / WE BUILD / YOU SEE) - Instagram aesthetic */
+        /* Positioned in BOTTOM-LEFT corner */
         .left-rail{
             position: absolute;
-            bottom: clamp(16px, 4vw, 32px);
-            left: clamp(16px, 4vw, 32px);
+            bottom: clamp(16px, 4vw, 32px);  /* Distance from bottom */
+            left: clamp(16px, 4vw, 32px);  /* LEFT side - back to original position */
             z-index: 2;
             display: flex;
             flex-direction: column;
-            gap: 0.25rem;
-            font-size: 0.8rem;
-            opacity: 0.95;
-            font-weight: 500;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
-            background: rgba(0,0,0,0.3);
-            padding: 8px 12px;
-            border-radius: 6px;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            background: rgba(255, 255, 255, 0.15);  /* Frosted glass effect */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
         }
-        .left-rail span{ opacity: 0.95 }
+        .left-rail span{ 
+            opacity: 1;
+            color: #ffffff;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+        .left-rail span:last-child {
+            color: var(--brand-yellow);  /* Bright yellow for @charitywater */
+            font-weight: 700;
+            margin-top: 4px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+            font-size: 1.05rem;
+        }
 
         /* Right-aligned content */
         .hero-right {
@@ -125,12 +144,13 @@
             width: 100%;
         }
 
-        /* Pitch content */
+        /* Pitch content - shifted further right */
         .pitch {
             width: min(560px, 100%);
             padding: 0;
             text-align: left;
-            margin-right: clamp(24px, 8vw, 120px);  /* Space from right edge */
+            margin-right: clamp(20px, 8vw, 100px);  /* Less right margin allows content to shift more */
+            transform: translateX(120px);  /* Increased from 80px - moves message further right */
         }
 
         /* Small screens: stack, hide the left visual to keep messaging clear */
@@ -144,6 +164,7 @@
                 max-width: 540px;
                 width: 100%;
                 text-align: center;
+                transform: none;  /* Remove the shift on mobile */
             }
             .hero::before {
                 background: linear-gradient(180deg,
@@ -166,7 +187,8 @@
         }
 
         .headline{ 
-            font-family: Merriweather, Georgia, serif; 
+            /* Changed from Merriweather to Montserrat/Proxima Nova */
+            font-family: 'Montserrat', Georgia, serif; 
             font-weight:700; 
             font-size: clamp(2.0rem, 4.2vw + .5rem, 3.2rem);
             line-height:1.1; 
@@ -209,44 +231,120 @@
             box-shadow: 0 6px 14px rgba(0,0,0,.2);
         } 
 
-        /* Left helper text (YOU GIVE / WE BUILD / YOU SEE / @charitywater) */
+        /* Left helper text (YOU GIVE / WE BUILD / YOU SEE) - Instagram aesthetic */
+        /* Positioned in BOTTOM-LEFT corner */
         .left-rail{
-            position:absolute; 
-            left: clamp(10px, 2.5vw, 28px); 
-            bottom: clamp(14px, 4vw, 36px);
-            display:flex; 
-            flex-direction:column; 
-            gap:.25rem;
-            font-size:.8rem; 
-            opacity:.85;
-            font-weight:500;
+            position: absolute;
+            bottom: clamp(16px, 4vw, 32px);  /* Distance from bottom */
+            left: clamp(16px, 4vw, 32px);  /* LEFT side - back to original position */
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            background: rgba(255, 255, 255, 0.15);  /* Frosted glass effect */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
         }
-        .left-rail span{opacity:.9}
+        .left-rail span{ 
+            opacity: 1;
+            color: #ffffff;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+        .left-rail span:last-child {
+            color: var(--brand-yellow);  /* Bright yellow for @charitywater */
+            font-weight: 700;
+            margin-top: 4px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+            font-size: 1.05rem;
+        }
 
-        /* Logo (bottom-right) */
+        /* Logo in bottom-right corner - the water can image */
         .brandmark{
-            position:absolute; 
-            right: clamp(12px, 3vw, 36px); 
-            bottom: clamp(12px, 3vw, 36px);
-            display:flex; align-items:center; gap:.5rem; opacity:.95;
-            filter: drop-shadow(0 2px 8px rgba(0,0,0,.35));
+            position: absolute; 
+            right: clamp(12px, 3vw, 36px);  /* Distance from right side */
+            bottom: clamp(12px, 3vw, 36px);  /* Distance from bottom - same level as slogan */
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            opacity: 0.95;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,.4));
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 2;
         }
-        .brandmark img{ height:22px; width:auto; }
+        .brandmark img{ 
+            height: clamp(80px, 12vw, 140px);  /* Logo size */
+            width: auto;
+        }
+        .brandmark:hover {
+            transform: scale(1.05);  /* Logo grows slightly on hover */
+            opacity: 1;
+        }
 
-        /* ------------ CONTENT 2: PROOF SECTION ------------- */
-        .proof{ padding: 56px 20px; background:#fff; color: var(--brand-ink); }
-        .section-inner{ max-width: var(--maxw); margin-inline:auto; }
-        .grid{ display:grid; gap:22px; grid-template-columns: repeat(3, 1fr); }
-        .card{
-            border:1px solid var(--brand-muted);
-            border-radius:16px; padding:22px; background:#fff;
+        /* ------------ CONTENT 2: IMPACT STORY SECTION ------------- */
+        .proof{ 
+            padding: 80px 20px; 
+            background: #f8f9fa; 
+            color: var(--brand-ink); 
         }
-        .card h3{ margin:0 0 .5rem 0; font-size:1.25rem }
-        .card p{ margin:0; color:#475569 }
+        .section-inner{ 
+            max-width: var(--maxw); 
+            margin-inline: auto; 
+        }
+        .grid{ 
+            display: grid; 
+            gap: 32px; 
+            grid-template-columns: repeat(3, 1fr); 
+        }
+        .card{
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+        .card-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+        }
+        .card-content {
+            padding: 24px;
+        }
+        .card h3{ 
+            margin: 0 0 12px 0; 
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--brand-ink);
+        }
+        .card p{ 
+            margin: 0; 
+            color: #475569;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
 
         /* Simple responsive rules */
         @media (max-width: 980px){
-            .proof .grid{ grid-template-columns: 1fr; }
+            .proof .grid{ 
+                grid-template-columns: 1fr; 
+                gap: 24px;
+            }
+            .card-image {
+                height: 280px;
+            }
         }
         @media (max-width: 860px){
             .headline{ font-size: clamp(1.9rem, 6.2vw, 2.5rem); }
@@ -286,35 +384,94 @@
 
       <!-- BRAND (bottom-right). Replace the src below with your SVG/PNG: /assets/logo.svg -->
       <div class="brandmark">
-        <img src="assets/logo.svg" alt="charity: water logo"> 
+        <img src="assets/water-can-transparent.png" alt="charity: water logo"> 
       </div>
     </div>
   </header>
-    <!-- ============== PROOF / VALUE SECTION ============== -->
+    <!-- ============== IMPACT STORY SECTION ============== -->
     <section class="proof" id="how-it-works">
         <div class="section-inner">
             <div class="grid">
                 <article class="card">
-                    <h3>YOU GIVE</h3>
-                    <p>Your gift funds clean water projects for communities in need.</p>
+                    <!-- Image showing person holding clean water in a glass -->
+                    <img src="img/water-glass.jpg" alt="Person holding a glass of clean water" class="card-image">
+                    <div class="card-content">
+                        <h3>YOU GIVE</h3>
+                        <p>Your gift funds clean water projects for communities in need.</p>
+                    </div>
                 </article>
                 <article class="card">
-                    <h3>WE BUILD</h3>
-                    <p>Our local partners plan, build, and train—sustainably and transparently.</p>
+                    <img src="assets/impact.jpg" alt="Building water projects" class="card-image">
+                    <div class="card-content">
+                        <h3>WE BUILD</h3>
+                        <p>Our local partners plan, build, and train—sustainably and transparently.</p>
+                    </div>
                 </article>
                 <article class="card">
-                    <h3>YOU SEE</h3>
-                    <p>We share updates and proof so you can see your impact with real data.</p>
+                    <img src="assets/eyJidWNrZXQiOiJkcm9wbWFyayIsImtleSI6IjUyMDQzL2Y2YTIxNzc2MzcxZGVmYWVlZDNhNGM5ZGFhMjIwNDUyNTNhMmQxNjI4OWY1MTYzYmYxOWY3ZTFkODU2NmY5OGMvcHJldmlldy9aaW1iYWJ3ZV8yMDIyX0NHLTA0MjMuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo2MDAsImhlaWdodCI6NjAwLCJmaXQiOiJpbn.jpg" alt="Person with water showing impact" class="card-image">
+                    <div class="card-content">
+                        <h3>YOU SEE</h3>
+                        <p>We share updates and proof so you can see your impact with real data.</p>
+                    </div>
                 </article>
             </div>
         </div>
     </section>
 
     <!-- Minimal footer -->
-    <footer style="padding:28px 20px; text-align:center; border-top:1px solid var(--brand-muted);">
-        <small>© <span id="y"></span> charity: water (demo). Built for a student project.
-            <a href="#donate" style="margin-left:.5rem; color:#0F172A; font-weight:600; text-underline-offset:4px;">Donate</a>
-        </small>
+    <footer style="
+        padding: 60px 20px 40px 20px; 
+        text-align: center; 
+        background: linear-gradient(135deg, #0F172A 0%, #1e293b 100%);
+        color: var(--brand-cream);
+        border-top: none;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    ">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <!-- Donate Call-to-Action -->
+            <h2 style="
+                font-family: 'Montserrat', sans-serif;
+                font-size: clamp(1.75rem, 3vw, 2.25rem);
+                font-weight: 700;
+                margin: 0 0 16px 0;
+                color: #ffffff;
+            ">Ready to Make a Difference?</h2>
+            
+            <p style="
+                font-size: clamp(1rem, 1.5vw, 1.15rem);
+                color: #cbd5e1;
+                margin: 0 0 32px 0;
+                line-height: 1.6;
+            ">Every dollar brings clean water to communities in need.</p>
+            
+            <!-- Donate Button -->
+            <a href="#donate" style="
+                display: inline-block; 
+                background: linear-gradient(90deg, #FFD200 0%, #FFA500 100%);
+                color: #0F172A;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 700; 
+                font-size: 1.1rem;
+                text-decoration: none; 
+                padding: 16px 40px; 
+                border-radius: 50px;
+                box-shadow: 0 6px 20px rgba(255, 210, 0, 0.4);
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+            " onmouseover="this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 10px 30px rgba(255, 210, 0, 0.5)';" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 6px 20px rgba(255, 210, 0, 0.4)';">
+                Donate Now
+            </a>
+            
+            <!-- Copyright -->
+            <p style="
+                margin: 48px 0 0 0;
+                font-size: 0.9rem;
+                color: #94a3b8;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                padding-top: 24px;
+            ">
+                © <span id="y"></span> charity: water (demo). Built for a student project.
+            </p>
+        </div>
     </footer>
 
     <script>
